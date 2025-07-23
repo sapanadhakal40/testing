@@ -57,9 +57,11 @@ describe('MoviePage', () => {
 
     const initialReviews = screen.getAllByRole('listitem').length;
 		const submitButton = screen.getByText('Submit');
+    //click without typing
     fireEvent.click(submitButton);
 
 		const updatedReviews = screen.getAllByRole('listitem').length;
+		// Expect the count of reviews to remain the same
     expect (updatedReviews).toEqual(initialReviews);
 		expect(updatedReviews).toBe(initialReviews);
   })
