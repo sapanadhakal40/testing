@@ -20,5 +20,16 @@ const allmovies = [
 		]);
     expect(topMovies.length).toBe(4);
 	});
-
+  it('should return an empty array if no movies meet the criteria', () => {
+		const lowRatedMovies = [
+			{ title: "Shutter Island", rating: 4.0, imageUrl: "https://via.placeholder.com/150" }
+		];
+		// expect(getTopMovies(lowRatedMovies)).toEqual([]);
+		const topMovies = getTopMovies(lowRatedMovies);
+		expect(topMovies).toEqual([]);
+	});
+	it('should return an empty array if no movies are provided', () => {
+		const topMovies = getTopMovies([]);
+		expect(topMovies).toEqual([]);
+	});
 });
