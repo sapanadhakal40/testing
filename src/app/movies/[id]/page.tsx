@@ -1,14 +1,22 @@
 "use client";
 import ReviewForm from "@/app/components/ReviewForm";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 
-const movieData = {
-	title: "Inception",
-	rating: 4.8,
-  reviews: ["Amazing movie!", "Mind-blowing!"],
-};
-
 export default function MoviePage() {
+  const params = useParams();
+
+  const movieTitle = params.id
+    ? params.id.toString().split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ')
+    : "Movie";
+    const movieData = {
+    title: movieTitle,
+    rating: 4.8,
+    reviews: ["Amazing movie!", "Mind-blowing!"],
+  };
+
   const [reviews, setReviews] = useState(movieData.reviews);
 
   return (
