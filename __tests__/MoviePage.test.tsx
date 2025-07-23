@@ -51,4 +51,16 @@ describe('MoviePage', () => {
 	  // expect(newReview.tagName).toBe('LI');
 		expect(isListItem).toBeTruthy();
 	});
+
+	  it('doesnot add an empty review', () => {
+		render(<MoviePage />);
+
+    const initialReviews = screen.getAllByRole('listitem').length;
+		const submitButton = screen.getByText('Submit');
+    fireEvent.click(submitButton);
+
+		const updatedReviews = screen.getAllByRole('listitem').length;
+    expect (updatedReviews).toEqual(initialReviews);
+		expect(updatedReviews).toBe(initialReviews);
+  })
 	});
