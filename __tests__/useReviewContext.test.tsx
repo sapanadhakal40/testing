@@ -38,4 +38,10 @@ describe ("useReviewContext", () => {
 	});
 		expect(result.current.reviews).toEqual([]);
 	});
+	it("throws an error if used outside of ReviewProvider", () => {
+		expect(() => {
+			renderHook(() => useReviewContext());
+		}).toThrow(
+			"useReviewContext must be used within a ReviewProvider");
 });
+	});
